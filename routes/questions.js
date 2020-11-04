@@ -1,4 +1,3 @@
-
 const express = require('express')
 const router = express.Router()
 const Question = require('../models/Question')
@@ -8,7 +7,7 @@ router.get('/', async (req, res) => {
     const allQuestions = await Question.find()
     res.json(
       {
-        data: allQuestions
+        questions: allQuestions
       }
     )
   }

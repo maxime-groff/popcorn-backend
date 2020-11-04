@@ -27,7 +27,17 @@ app.use((req, res, next) => {
 
 // Basic testing route
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send(`Hello World! \n
+    - Check the documentation at /documentation (coming soon)  \n
+    - or the following endpoints :  \n
+      - /api/scores \n
+      - /api/scores/:username \n
+      - /api/questions \n
+      - /api/questions/random \n
+      \n 
+      \n
+    Have fun 
+  `)
 })
 
 // Other routes
