@@ -21,7 +21,7 @@ router.get('/:username', async (req, res) => {
   try {
     var reg = new RegExp('^\\d+$');
     if (reg.test(req.params.username)) {
-      const userScore = await Score.find().limit(parseInt(req.params.username))
+      const userScore = await Score.find().sort({score: -1}).limit(parseInt(req.params.username))
       res.json(userScore)
     }
     else {
