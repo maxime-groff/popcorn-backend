@@ -19,8 +19,15 @@ router.get('/', async (req, res) => {
 
 router.get('/:username', async (req, res) => {
   try {
-    const userScore = await Score.find({ username: req.params.username})
-    res.json(userScore)
+    var reg = new RegExp('^\\d+$');
+    if (reg.test(req.params.username)) {
+      const userScore = await Score.find().limit(parseInt(req.params.username))
+      res.json(userScore)
+    }
+    else {
+      const userScore = await Score.find({ username: req.params.username})
+      res.json(userScore)
+    }
   }
   catch (err) {
     console.log(err)

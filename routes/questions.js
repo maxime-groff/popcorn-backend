@@ -22,7 +22,7 @@ router.get('/random', async (req, res) => {
     const randomQuestion = await Question.findOne()
     res.json(
       {
-        data: randomQuestion
+        questions: randomQuestion
       }
     )
   }
