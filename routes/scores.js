@@ -4,7 +4,7 @@ const Score = require('../models/Score')
 
 router.get('/', async (req, res) => {
   try {
-    const allScores = await Score.find()
+    const allScores = await Score.find().sort({score: -1})
     res.json(
       {
         scores: allScores
