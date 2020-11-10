@@ -17,6 +17,21 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/:limit', async (req, res) => {
+  try {
+    const questionsLimited = await Question.find().limit(parseInt(req.params.limit))
+    res.json(
+      {
+        questions: questionsLimited
+      }
+    )
+  }
+  catch (err) {
+    console.log(err)
+    res.status(500).send("error")
+  }
+})
+
 router.get('/random', async (req, res) => {
   try {
     const randomQuestion = await Question.findOne()
