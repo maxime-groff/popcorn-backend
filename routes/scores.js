@@ -35,4 +35,19 @@ router.get('/:username', async (req, res) => {
   }
 })
 
+router.post('/new', async (req, res) => {
+  try {
+    const score = new Score({
+      username: req.body.username,
+      score: req.body.score
+    })
+    await score.save()
+    res.send(score)
+  }
+  catch (err) {
+    console.log(err)
+    res.status(500).send("error")
+  }
+})
+
 module.exports = router

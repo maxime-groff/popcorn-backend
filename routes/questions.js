@@ -47,4 +47,19 @@ router.get('/random', async (req, res) => {
   }
 })
 
+router.post('/new', async (req, res) => {
+  try {
+    const question = new Question({
+      question: req.body.question,
+      answers: req.body.answers
+    })
+    await question.save()
+    res.send(question)
+  }
+  catch (err) {
+    console.log(err)
+    res.status(500).send("error")
+  }
+})
+
 module.exports = router

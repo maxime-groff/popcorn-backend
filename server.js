@@ -14,6 +14,8 @@ connectDB({
 // Specify running port 
 const PORT = process.env.PORT || 5000
 
+app.use(express.json())
+
 // CORS
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*'); // allow the access of the api, to all clients/websites asking
